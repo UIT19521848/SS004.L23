@@ -1,0 +1,164 @@
+%% Common library
+\documentclass[paper=a4,fontsize=12pt]{report}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[utf8x]{vietnam}
+\usepackage{amsfonts,amssymb,amsmath}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage[colorlinks,urlcolor=blue]{hyperref}
+%% Using table of content
+\usepackage{tabularx}
+%% Using to draw table
+\usepackage{float}
+\usepackage{array}
+\usepackage{makecell}
+
+\newcommand{\MyChapter}[2]
+{
+    \addcontentsline{toc}{chapter}{#1{. }#2}
+    \begin{center}
+        \huge
+        \textbf{#2}
+    \end{center}
+    \vspace{10px}
+}
+
+\newcommand{\MySection}[2]
+{
+    \addcontentsline{toc}{section}{#1{. }#2}
+    \Large
+    \textbf{#1{) }#2}
+    \par
+}
+\begin{document}
+\begin{figure}[h!]
+    \includegraphics[scale=0.95]{title_top_uit_transparent.png}
+    \label{fig:logo_uit}
+\end{figure}
+
+\vspace{200px}
+
+{\centering{\textbf{\huge BÁO CÁO BÀI TẬP NHÓM LẦN I}\par}}
+
+
+
+\vspace{180px}
+
+\Large{
+\hspace{40px} {\textbf{Thành viên 1:} Nguyễn Xuân Minh - 19521848\par}
+\hspace{40px} {\textbf{Thành viên 2:} Nguyễn Đức Phương Nguyên - 19521913\par}
+\hspace{40px} {\textbf{Thành viên 3:} Nguyễn Đức Thắng - 19522206\par}
+\hspace{40px} {\textbf{Lớp:} SS004.L23\par}
+\hspace{40px} {\textbf{Giảng viên: ThS. Nguyễn Văn Toàn}\par}
+\hspace{40px} {\textbf{Năm học: 2020 - 2021}\par}
+}
+\thispagestyle{empty}
+\newpage
+\pagenumbering{arabic}
+\MyChapter{I}{Họp Đồng Nhóm}
+\hspace{0px}
+\MySection{1}{Thành viên trong nhóm:}
+
+%% Begin Table
+\vspace{10px}
+\hspace{32px}
+\begin{tabularx}{0.8\textwidth} { 
+  | >{\raggedright\arraybackslash}X 
+  | >{\raggedleft\arraybackslash}X | }
+ \hline
+  \thead{Họ và tên}
+  & \thead{MSSV} \\
+  \hline
+  \thead{Nguyễn Xuân Minh}
+  & \thead{19521848} \\
+  \hline
+  \thead{Nguyễn Đức Phương Nguyên}
+  & \thead{19521913} \\
+  \hline
+  \thead{Nguyễn Đức Thắng}
+  & \thead{19522206} \\
+  \hline
+\end{tabularx}
+%% End table
+
+\vspace{8px}
+\MySection{2}{Mục đích thành lập nhóm:}
+\begin{itemize}
+    \item Nâng cao kĩ năng làm việc nhóm và các kĩ năng khác cho các thành viên trong nhóm
+    \item Cùng nhau hoàn thành tốt các bài tập nhóm môn Kỹ năng nghề nghiệp.
+    \item Tạo mối quan hệ, tình đoàn kết, giúp đỡ lẫn nhau giữa các thành viên,thúc đẩy khả năng và sự sáng tạo của mỗi thành viên, tăng cường sự tương tác lẫn nhau, tự học.
+\end{itemize}
+
+\MySection{3}{Bảng phân chia vai trò của các thành viên}
+\vspace{10px}
+\hspace{32px}
+%% Begin Table
+\begin{tabular}{|l|c|c|c|c|r|}\hline
+\diaghead{\theadfont Diag ColumnmnHead II}%
+  {Thành\\viên}{Công\\việc}
+  & \thead{Tìm kiếm/nghiên cứu\\thông tin về game}
+  & \thead{Viết Source Code}
+  & \thead{Viết giao diện}
+  & \thead{Lập bản\\họp đồng nhóm}\\ 
+  \hline
+  \thead{Nguyễn Xuân Minh}
+  & \thead{X}
+  & \thead{X}
+  & \thead{}
+  & \thead{X}\\    
+  \hline
+  \thead{Nguyễn Đức Phương Nguyên}
+  & \thead{X}
+  & \thead{X}
+  & \thead{X}
+  & \thead{X}\\    
+  \hline
+  \thead{Nguyễn Đức Thắng}
+  & \thead{X}
+  & \thead{X}
+  & \thead{X}
+  & \thead{}\\    
+  \hline
+  
+\end{tabular}
+%% End table
+\vspace{8px}
+
+\MySection{4}{Thống nhất chuẩn làm việc}
+\begin{itemize}
+    \item Chuẩn LaTeX cho hợp đồng:
+    \begin{itemize}
+        \item Compiler LaTex: pdfLatex
+        \item Version TeX: 2020
+        \item Build Engine: Overleaf.com
+    \end{itemize}
+    \item Chuẩn code cho game "Snake - Con Rắn":
+    \begin{itemize}
+        \item Ngôn ngữ lập trình: python (Version: 3.7)
+        \item Hệ điều hành hỗ trợ: Windows 7-8-10
+        \item Ngôn ngữ giao diện: Tiếng Anh
+    \end{itemize}
+    \item Công cụ quản lý mã nguồn: GitHub
+    \item Cách thức liên lạc: Messenger (Facebook)
+\end{itemize}
+
+\MySection{5}{Một số qui định chung}
+\begin{itemize}
+    \item \textbf{NÊN: } \begin{itemize}
+        \item {Nghiêm túc, đúng giờ khi làm việc nhóm.}
+        \item {Có tinh thần trách nhiêm, vì tập thể.}
+        \item {Hòa đồng, vui vẻ, tích cực.}
+        \item {Lắng nghe ý kiến và góp ý trung thực}
+    \end{itemize}
+    \item \textbf{KHÔNG NÊN: } \begin{itemize}
+        \item {Gây hấn, chỉ trích gây mất đoàn kết}
+        \item {Trễ deadline}
+        \item {Thụ động, khép kín}
+    \end{itemize}
+\end{itemize}
+
+\MySection{6}{Cam kết}
+\indent\indent\Large{\hspace{5px}\indent{Sau khi xem xét, bàn bạc và thống nhất về họp đồng trên, tất cả thành viên xin cam kết sẽ tự giác thực hiện các nhiệm vụ được giao một cách cẩn thận, hiệu quả và sẽ cố gắng đết sức để hoàn thành trước thời hạn được giao. \par}}
+\par
+
+\end{document}
