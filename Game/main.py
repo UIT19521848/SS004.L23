@@ -16,24 +16,31 @@ class Apple:
 class Snake:
     def __init__(self, parent_screen):
         self.parent_screen = parent_screen
-        self.block = None
+        self.block = pygame.image.load("PATH_IMG").convert()
         self.x = 0
         self.y = 0
 
     def draw(self):
-        pass
+        self.parent_screen.fill((110, 110, 5))
+        self.parent_screen.blit(self.block, (self.x,self.y))
+        pygame.display.flip()
+
 
     def move_left(self):
-        pass
+        self.x -= 10
+        self.draw()
 
     def move_right(self):
-        pass
+        self.x += 10
+        self.draw()
 
     def move_down(self):
-        pass
+        self.y += 10
+        self.draw()
 
     def move_up(self):
-        pass
+        self.y -= 10
+        self.draw()
 
 
 class Game:
@@ -66,7 +73,6 @@ class Game:
                 if event.type == QUIT:
                     running = False
             pass
-
 
 if __name__ == "__main__":
     game = Game()
