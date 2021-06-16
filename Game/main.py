@@ -16,7 +16,7 @@ class Apple:
 class Snake:
     def __init__(self, parent_screen):
         self.parent_screen = parent_screen
-        self.block = pygame.image.load("PATH_IMG").convert()
+        self.block = pygame.image.load("\source_image\body.png").convert()
         self.x = 0
         self.y = 0
 
