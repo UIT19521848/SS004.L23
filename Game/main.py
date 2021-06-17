@@ -14,16 +14,18 @@ class Apple:
 
 
 class Snake:
-    def __init__(self, parent_screen):
+    def __init__(self, parent_screen,length):
         self.parent_screen = parent_screen
         self.block = pygame.image.load("PATH_IMG").convert()
-        self.x = 0
-        self.y = 0
+        self.length = length
+        self.x = [40]*length
+        self.y = [40]*length
         self.direction = 'left'
 
     def draw(self):
         self.parent_screen.fill((110, 110, 5))
-        self.parent_screen.blit(self.block, (self.x,self.y))
+        for i in range(self.length):
+            self.parent_screen.blit(self.block,(self.x[i],self.y[i]))
         pygame.display.flip()
 
 
@@ -47,14 +49,17 @@ class Snake:
         self.y -= 10
         self.draw()
     def keep_moving(self):
+        for i in range(self.length - 1, 0 ,-1):
+            self.x[i] = self.x[i-1]
+            self.y[i] = self.y[i-1]
         if self.direction == 'left':
-            self.x -= 10
+            self.x[0] -= 40
         if self.direction == 'right':
-            self.x += 10
+            self.x[0] += 40
         if self.direction == 'down':
-            self.y += 10
+            self.y[0] += 40
         if self.direction == 'up':
-            self.y -= 10
+            self.y[0] -= 40
         self.draw()
 
 class Game:
@@ -62,7 +67,7 @@ class Game:
         pygame.init()
         self.surface = pygame.display.set_mode((1000, 500))
         self.surface.fill((255, 255, 255))
-        self.snake = Snake(self.surface)
+        self.snake = Snake(self.surface,3)
         self.snake.draw()
         self.apple = Apple(self.surface)
         self.apple.draw()
