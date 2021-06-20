@@ -68,7 +68,7 @@ class Game:
         pygame.init()
         self.surface = pygame.display.set_mode((1000, 1000))
         self.surface.fill((255, 255, 255))
-        self.snake = Snake(self.surface,3)
+        self.snake = Snake(self.surface,1)
         self.snake.draw()
         self.apple = Apple(self.surface)
         self.apple.draw()
@@ -77,9 +77,15 @@ class Game:
             if y1 >= y2 and y1 < y2 + 40:
                 return True
         return False
+    def display_score(self):
+        font = pygame.font.SysFont('arial',30)
+        score = font.render(f"Score: {self.snake.length}",True,(200,200,200))
+        self.surface.blit(score,(850,10))
     def play(self):
         self.snake.keep_moving()
         self.apple.draw()
+        self.display_score()
+        pygame.display.flip()
         if self.hit(self.snake.x[0], self.snake.y[0], self.apple.x, self.apple.y):
             self.snake.eat()
             self.apple.move()
