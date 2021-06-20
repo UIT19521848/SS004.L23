@@ -1,6 +1,8 @@
 import pygame
 from pygame.locals import *
 import time
+
+import random
 SIZE = 40
 class Apple:
     def __init__(self, parent_screen):
@@ -12,6 +14,10 @@ class Apple:
     def draw(self):
         self.parent_screen.blit(self.image, (self.x,self.y))
         pygame.display.flip()
+    def move(self):
+        self.x = random.randint(0,25)*40
+        self.y = random.randint(0,20)*40
+
 
 
 class Snake:
@@ -32,48 +38,51 @@ class Snake:
 
     def move_left(self):
         self.direction = 'left'
-        self.x -= 10
-        self.draw()
-
     def move_right(self):
         self.direction = 'right'
-        self.x += 10
-        self.draw()
-
     def move_down(self):
         self.direction = 'down'
-        self.y += 10
-        self.draw()
 
     def move_up(self):
         self.direction = 'up'
-        self.y -= 10
-        self.draw()
+    def eat(self):
+        self.length+=1
+        self.x.append(-1)
+        self.y.append(-1)
     def keep_moving(self):
+        for i in range(self.length - 1, 0 ,-1):
+            self.x[i] = self.x[i-1]
+            self.y[i] = self.y[i-1]
         if self.direction == 'left':
-            self.x -= 10
+            self.x[0] -= 40
         if self.direction == 'right':
-            self.x += 10
+            self.x[0] += 40
         if self.direction == 'down':
-            self.y += 10
+            self.y[0] += 40
         if self.direction == 'up':
-            self.y -= 10
+            self.y[0] -= 40
         self.draw()
 
 class Game:
     def __init__(self):
         pygame.init()
-        self.surface = pygame.display.set_mode((1000, 500))
+        self.surface = pygame.display.set_mode((1000, 1000))
         self.surface.fill((255, 255, 255))
-        self.snake = Snake(self.surface,2)
+        self.snake = Snake(self.surface,3)
         self.snake.draw()
         self.apple = Apple(self.surface)
         self.apple.draw()
-    
+    def hit(self,x1,y1,x2,y2):
+        if x1 >= x2 and x1 < x2 + 40:
+            if y1 >= y2 and y1 < y2 + 40:
+                return True
+        return False
     def play(self):
-        self.snake.walk()
+        self.snake.keep_moving()
         self.apple.draw()
-        
+        if self.hit(self.snake.x[0], self.snake.y[0], self.apple.x, self.apple.y):
+            self.snake.eat()
+            self.apple.move()
 
     def run(self):
         running = True
