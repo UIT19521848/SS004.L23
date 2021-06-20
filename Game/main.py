@@ -109,7 +109,7 @@ class Game:
 
                 if event.type == QUIT:
                     running = False
-           self.play()
+            self.play()
             time.sleep(0.2)
 
 if __name__ == "__main__":
