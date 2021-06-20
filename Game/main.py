@@ -1,13 +1,15 @@
 import pygame
 from pygame.locals import *
 import time
+
 import random
+SIZE = 40
 class Apple:
     def __init__(self, parent_screen):
         self.parent_screen = parent_screen
-        self.image = pygame.image.load("source_image\\apple.png").convert()
-        self.x = 120
-        self.y = 120
+        self.image = pygame.image.load("\source_image\apple.png").convert()
+        self.x = SIZE*3
+        self.y = SIZE*3
 
     def draw(self):
         self.parent_screen.blit(self.image, (self.x,self.y))
@@ -17,19 +19,20 @@ class Apple:
         self.y = random.randint(0,20)*40
 
 
+
 class Snake:
-    def __init__(self, parent_screen,length):
-        self.parent_screen = parent_screen
-        self.block = pygame.image.load("PATH_IMG").convert()
+    def __init__(self, surface, length):
         self.length = length
-        self.x = [40]*length
-        self.y = [40]*length
+        self.parent_screen = surface
+        self.block = pygame.image.load("\source_image\body_snake.png").convert()
+        self.x = [SIZE]*length
+        self.y = [SIZE]*length
         self.direction = 'left'
 
     def draw(self):
         self.parent_screen.fill((110, 110, 5))
         for i in range(self.length):
-            self.parent_screen.blit(self.block,(self.x[i],self.y[i]))
+            self.parent_screen.blit(self.block, (self.x[i],self.y[i]))
         pygame.display.flip()
 
 
@@ -80,6 +83,7 @@ class Game:
         if self.hit(self.snake.x[0], self.snake.y[0], self.apple.x, self.apple.y):
             self.snake.eat()
             self.apple.move()
+
     def run(self):
         running = True
 
@@ -99,7 +103,7 @@ class Game:
 
                 if event.type == QUIT:
                     running = False
-            self.play()
+           self.play()
             time.sleep(0.2)
 
 if __name__ == "__main__":
