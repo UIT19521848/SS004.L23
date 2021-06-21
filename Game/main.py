@@ -27,7 +27,7 @@ class Snake:
         self.block = pygame.image.load("\source_image\body_snake.png").convert()
         self.x = [SIZE]*length
         self.y = [SIZE]*length
-        self.direction = 'left'
+        self.direction = 'down'
 
     def draw(self):
         self.parent_screen.fill((110, 110, 5))
@@ -90,16 +90,18 @@ class Game:
             self.snake.eat()
             self.apple.move()
         for i in range(3,self.snake.length):
-            if self.is_conllision(self.snake.x[0],self.snake.y[0],self.snake.x[i],self.snake.y[i]):
+            if self.hit(self.snake.x[0],self.snake.y[0],self.snake.x[i],self.snake.y[i]):
                 raise "GAME OVER"
+            if not (0 <= self.snake.x[0] <= 1000 and 0 <= self.snake.y[0] <= 800):
+                raise "Hit the boundry error"
              
     def show_game_over(self):
         self.surface.fill((110, 110, 5))
-        font = pygame.font.Sysfont('arial',30)
-        line1 = font.render(f"Game is over! Your score is {self.snake.length}", True, (255,255,255)))
+        font = pygame.font.SysFont('arial',30)
+        line1 = font.render(f"Game is over! Your score is {self.snake.length}", True, (255,255,255))
         self.surface.blit(line1, (200,300))
-        line2 = font.render("To play again press Enter. To exit press ESC", True, (255,255,255)))
-        self.surface.blit(line2, (200,300))
+        line2 = font.render("To play again press Enter. To exit press ESC", True, (255,255,255))
+        self.surface.blit(line2, (200,350))
         pygame.display.flip()
     def reset(self):
         self.snake = Snake(self.surface,3)
